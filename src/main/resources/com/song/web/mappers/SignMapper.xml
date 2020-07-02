@@ -2,6 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.song.web.SignMapper">
- 
+  <mapper namespace="com.song.web.mappers.SignMapper">
+ 	<select id="truncatePerson" parameterType="hashMap">
+ 	 ${TRUNCATE_PERSONS}
+ 	</select>
+ 	<select id="createDB" parameterType="hashMap">
+ 	 ${CREATE_DB}
+ 	</select>
+ 	<select id="selectByUseridAndPassword"
+  	resultType="com.song.web.domains.SignDTO"
+   	parameterType="com.song.web.domains.SignDTO">
+    </select>
 </mapper>
+

@@ -1,60 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<form id="join" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
 
+    <label for="UserID"><b>UserID</b></label>
+    <input id="userid" type="text" placeholder="Enter UserID" name="userid" required>
 
+    <label for="Password"><b>Password</b></label>
+    <input id="password" type="password" placeholder="Enter Password" name="password" required>
 
-  <div id="back" style="background: black;">
+    <!-- <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+     
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    -->
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-        <div class="container">
-            <label style="font-size:23px; color:#ffffff">ID</label>
-            <input style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="password" type="id" placeholder="ENTER ID" required>
-
-            <label style="font-size:23px; color:#ffffff">PASSWORD</label>
-            <input style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="password"  placeholder="ENTER PASSWORD" required>
-
-           <label style="font-size:23px; color:#ffffff">NAME</label>
-            <input style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="name" placeholder="ENTER NAME" required>
-
-
-            <label style="font-size:23px; color:#ffffff">PHONENUMBER</label>
-            <input  style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="phonenumber"  @keyup.enter="phonenumber"  v-model="phoneNumber" placeholder="ENTER PHONENUMBER" required>
-
-            <label style="font-size:23px; color:#ffffff">BIRTH</label>
-            <input  style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="birth" placeholder="ENTER BIRTH" required>
-
-
-            <label style="font-size:23px; color:#ffffff;">SEX</label>
-            <input  style="width: 100%; padding: 12px 20px; margin: 0px 0px 19px 0px; display: inline-block;
-        					border: 1px solid #00ff00; box-sizing: border-box;" type="sex" placeholder="ENTER SEX" required>
-
-
-            <button id="join_btn"  @click="join" style="font-size:27px; margin:40px 0px 0px 0px; background-color: #00ff00; color: black;" type="submit">SIGN UP</button>
-
-        </div>
-        <div class="container" style="background-color:black" >
-           <button type="button" style="background-color: #00ff00; color: black;" class="cancelbtn">CANCEL</button>
-        </div>
-
-</div>
-
-
-
-
-</div>
-
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button id="signup_btn" type="submit" class="signupbtn">Sign Up</button>
+    </div>
   </div>
-
-</body>
-</html>
+</form>
+<script src="${javascript}/store/join.js"></script>
 
 <script>
-$('#mainimg').click(function(){
-	alert("<%=application.getContextPath()%>")
-	location.href = "<%=application.getContextPath()%>/"
+document.getElementById('signup_btn').addEventListener('click',function(e){
+	e.preventDefault()
+	sign.init()
+	sign.join({"userid": document.getElementById('userid').value,
+        		"password": document.getElementById('password').value})
 })
 </script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>

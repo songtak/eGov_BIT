@@ -6,14 +6,12 @@
 <tiles:insertAttribute name="header"/>
 </head>
 <body>
-<div>
-<tiles:insertAttribute name="top"/>
+<div id="wrapper">
 <tiles:insertAttribute name="navigator"/>
 <section>
 	<article>
-		<jsp:include page="../main/Jumbotron.jsp"></jsp:include>
-	</article> 
-	 
+		<tiles:insertAttribute name="jumbotron"/>
+	</article>
 	<article>
 		<tiles:insertAttribute name="content"/>
 	</article>
@@ -21,6 +19,6 @@
 <footer>
 	<tiles:insertAttribute name="footer"/>
 </footer>
-</div>
+</div>	
 </body>
 </html>

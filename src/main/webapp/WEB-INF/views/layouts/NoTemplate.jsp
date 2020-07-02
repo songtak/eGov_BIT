@@ -10,8 +10,8 @@
 <tiles:insertAttribute name="navigator"/>
 <section>
 
-	<article>
-		<tiles:insertAttribute name="content"/>
+<article>
+		<tiles:insertAttribute name="noTemplate"/>
 	</article>
 </section>
 

@@ -1,23 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-  <Topnav>
-      <div id="topnav" style="font-size: 24px; color: black; overflow: hidden; background-color: #00ff00;">
-      
-        <span id="a" style="display: block; color: black; text-align: center; padding: 14px 16px; text-decoration: none; float:left"> FIND </span>
-        <span id="b" style="display: block; color: black; text-align: center; padding: 14px 16px; text-decoration: none; float:left"> LET'S GO FLOATING </span>
-        <span id="login" style="display: block; color: black; text-align: center; padding: 14px 16px; text-decoration: none; float:right">SIGN IN</span>
-        <button id="a_join" style="display: block; color: black; text-align: center; padding: 14px 16px; text-decoration: none; float:right">SIGN UP</button>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Portfolio</a>
     </div>
-  </Topnav>
-  
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <c:choose>
+      <c:when test="${empty session}">
+		       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+        <li><a id="a_join"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
+      </ul>
+      </c:when>
+      <c:when test="${accessCode eq 'admin' }">
+       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>접속중</a></li>
+        <li><a id="a_join"><span class="glyphicon glyphicon-log-in"></span>접속해제</a></li>
+      </ul>
+      </c:when>
+            <c:otherwise>
+             <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
+        <li><a id="a_join"><span class="glyphicon glyphicon-log-in"></span>회원탈퇴</a></li>
+      </ul>
+      </c:otherwise>
+      </c:choose>
+    </div>
+  </div>
+</nav>
 <script>
-$('#a_join').click(function() {
-	location.href = `${context}/sign/join`
+$('#a_join').click(function(e){
+	e.preventDefault()
+	location.href = `${context}/location/sign/Join`
 })
-
 </script>
-
-
-
