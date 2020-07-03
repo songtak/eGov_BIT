@@ -13,5 +13,9 @@
   	resultType="com.song.web.domains.SignDTO"
    	parameterType="com.song.web.domains.SignDTO">
     </select>
+    
+    <select id="selectAll"
+     resultType="com.song.web.domains.SignDTO"
+     ></select>
 </mapper>
 

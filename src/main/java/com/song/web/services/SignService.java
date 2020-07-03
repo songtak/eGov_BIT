@@ -1,6 +1,8 @@
 package com.song.web.services;
 
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.song.web.domains.SignDTO;
@@ -10,7 +12,7 @@ public interface SignService {
 	 public void save();
 	 public void update();
 	 public void findOne();
-	 public void findAll();	
+	 public List<SignDTO> findAll();	
 	 public void count();
 	 public void delete();
 	 public SignDTO findByUseridAndPassword(SignDTO person);
